@@ -8,6 +8,21 @@
         "ncu-update": "ncu -u",
         "reinstall": "npm install",
         "update-packages": "run-s ncu-update reinstall",
+        "pageheadcreate": "cd sources/page-heads && thingymodulecreate",
+        "sourcemodulecreate": "cd sources/source && thingymodulecreate",
+
+        "use-sub-sourcemodule": "run-s \"sourcemodulecreate submodule,{1},use,{2}\"  --",
+        "create-sub-sourcemodule": "run-s -ns  \"sourcemodulecreate submodule,{1},create,uisourcemodule\"  --",
+        "merge-sub-sourcemodule": "run-s -ns  \"sourcemodulecreate submodule,{1},merge,{2}\"  --",
+        "create-dir-sourcemodule": "run-s -ns  \"sourcemodulecreate directory,{1},create,uisourcemodule\"  --",
+        "merge-dir-sourcemodule": "run-s -ns  \"sourcemodulecreate directory,{1},merge,{2}\"  --",
+        "create-dir-pagehead": "run-s -ns  \"pageheadcreate directory,{1},create,sourcespagehead\"  --",
+        "create-dir-pageheadsourcemodule": "run-s -ns  \"sourcemodulecreate directory,{1},create,pageheadsourcemodule\"  --",
+        
+        "create-subapp": "run-s -ns \"create-dir-pagehead {1}\" \"create-dir-pageheadsourcemodule {1}\" --",
+        
+        "sourcemodule-to-sub": "run-s \"sourcemodulecreate submodule,{1}\" --",
+        "sourcemodule-to-dir": "run-s \"sourcemodulecreate directory,{1}\" --",
         "module-gen": "thingy-module-gen --",
         "sync-allmodules": "thingy-allmodules-sync",
         "add-module": "run-s -ns \"module-gen {*}\" sync-allmodules --",
